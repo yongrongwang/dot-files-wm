@@ -4,4 +4,4 @@ charging="+"
 [[ $status == "Discharging" ]] && charging=""
 date=$(date +'%a %b %d %H:%M')
 
-echo Pow: $power%$charging \| $date
+echo Bat: $power%$charging \| $date

@@ -24,7 +24,7 @@ set $dmenu j4-dmenu-desktop --dmenu='bemenu -i -H 30 -W 0.3 -l "10 down" --fb "#
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/.config/wallpapers/2.png fill
+output * bg ~/.local/share/wallpapers/1.png fill
 #
 # Example configuration:
 #
@@ -60,6 +60,7 @@ exec swayidle -w \
     bindgesture swipe:left workspace next
 
     input type:keyboard {
+        xkb_options caps:swapescape,ctrl:swap_lalt_lctl_lwin
         repeat_delay 200
         repeat_rate 50
     }
@@ -216,8 +217,8 @@ bindsym $mod+r mode "resize"
 #
     # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/.config/sway/volume.sh
-    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && ~/.config/sway/volume.sh
-    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && ~/.config/sway/volume.sh
+    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1 && ~/.config/sway/volume.sh
+    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1 && ~/.config/sway/volume.sh
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%- && ~/.config/sway/brightness.sh
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+ && ~/.config/sway/brightness.sh
@@ -252,5 +253,6 @@ default_border pixel 1
 default_floating_border pixel 1
 client.focused #191919 #202020 #ffffff #191919 #202020
 exec fcitx5
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 include /etc/sway/config.d/*
